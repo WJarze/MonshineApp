@@ -1,0 +1,16 @@
+
+Q	java:S107)"<Method has 8 parameters, which is greater than 7 authorized.(‘ØÓô
+a
+java:S13017"KReplace this "switch" statement by "if" statements to increase readability.(ŒˆëÈ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±¶Üùÿÿÿÿ
+
+java:S11301"xRemove the declaration of thrown exception 'exception.NoSuchOptionException', as it cannot be thrown from method's body.(òü¡
+n	java:S1317"YComplete cases by adding the missing enum constants or add a default case to this switch.(ŒˆëÈ
+N	java:S106A"9Replace this use of System.out or System.err by a logger.(“Éëô
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
+S	java:S106M"9Replace this use of System.out or System.err by a logger.(å‚ù­ÿÿÿÿÿ
+S	java:S106N"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
+S	java:S106["9Replace this use of System.out or System.err by a logger.(´…÷½ıÿÿÿÿ
+N	java:S106]"9Replace this use of System.out or System.err by a logger.(¤¨ş
+N	java:S106c"9Replace this use of System.out or System.err by a logger.(œ×÷˜
+S	java:S106e"9Replace this use of System.out or System.err by a logger.(ÂÛÑ®úÿÿÿÿ
