@@ -1,21 +1,0 @@
-
-R	java:S107""=Method has 24 parameters, which is greater than 7 authorized.(¸°˜›
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†¸ª¶
-7
-java:S6205A"Remove this redundant block.(€…ûôüÿÿÿÿ
-2
-java:S6205D"Remove this redundant block.(ğ¦Ã¬
-2
-java:S6205G"Remove this redundant block.(’Œ
-7
-java:S6205R"Remove this redundant block.(ÂŞÆışÿÿÿÿ
-7
-java:S6205Y"Remove this redundant block.(Î­¼¦ûÿÿÿÿ
-S	java:S106f"9Replace this use of System.out or System.err by a logger.(ÈÏ½ùÿÿÿÿ
-P
-java:S2209h"5Change this instance-reference to a static reference.(†ÑÙùùÿÿÿÿ
-S	java:S106s"9Replace this use of System.out or System.err by a logger.(´…÷½ıÿÿÿÿ
-N	java:S106u"9Replace this use of System.out or System.err by a logger.(¤¨ş
-N	java:S106|"9Replace this use of System.out or System.err by a logger.(œ×÷˜
-N	java:S106~"9Replace this use of System.out or System.err by a logger.(Å¶äÌ
-O	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(ø¦¿¿
