@@ -25,11 +25,13 @@ import MoonshineMethod.ModelConcentrationAlc.InterpolationFunctionPureAlc;
 import MoonshineMethod.ModelConcentrationAlc.Volume;
 import MoonshineMethod.ModelConcentrationAlc.Weight;
 import exception.NoSuchOptionException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MoonshineMethod {
+    private static final Logger log = Logger.getLogger ( MoonshineData.class.getName ( ) );
 
     public void moonshineMethod(
             Scanner scanner
@@ -60,75 +62,71 @@ public class MoonshineMethod {
 
         do {
             printOptions ( );
-            moonshineData = getMoonshineData( scanner, dataReadMoonshine);
+            moonshineData = getMoonshineData ( scanner , dataReadMoonshine );
             switch (moonshineData) {
-                case YIELD_FROM_RAW_MATERIAL -> {
-                    controlLoopYield.alcYieldRawMaterial ( scanner , dataReadYield , rawMaterial , alcMethod );
-                }
-                case YIELD_FROM_DISTILLATION -> {
-                    distillationYieldCalculation.distYieldCalculation ( scanner , distillate , dataReadDistillate , distillationYield );
-                }
-                case CONCENTRATION_CONVERSION -> {
-                    alcCalculation.alcConversion (
-                            scanner
-                            , dataReadConcentrationAlc
-                            , interpolation
-                            , interpolationPureAlc
-                            , alcConcentration
-                            , coefficient
-                            , volume
-                            , weight );
-                }
-                case TOTAL_EFFICIENCY -> {
-                    efficiencyMethod.summaryEfficiency (
-                            scanner
-                            , dataReadEfficiency
-                            , dataEfficiency
-                            , efficiencyCalculation );
-                }
-                case CHEMICAL_PROPERTIES -> {
-                    densityAlc.alcDensity (
-                            scanner
-                            , optionDensity
-                            , dataReadConcentrationAlc
-                            , interpolation
-                            , interpolationPureAlc
-                            , alcConcentration
-                            , coefficient
-                            , alcCalculation );
-                }
+                case YIELD_FROM_RAW_MATERIAL ->
+                        controlLoopYield.alcYieldRawMaterial ( scanner , dataReadYield , rawMaterial , alcMethod );
+
+                case YIELD_FROM_DISTILLATION ->
+                        distillationYieldCalculation.distYieldCalculation ( scanner , distillate , dataReadDistillate , distillationYield );
+
+                case CONCENTRATION_CONVERSION -> alcCalculation.alcConversion (
+                        scanner
+                        , dataReadConcentrationAlc
+                        , interpolation
+                        , interpolationPureAlc
+                        , alcConcentration
+                        , coefficient
+                        , volume
+                        , weight );
+
+                case TOTAL_EFFICIENCY -> efficiencyMethod.summaryEfficiency (
+                        scanner
+                        , dataReadEfficiency
+                        , dataEfficiency
+                        , efficiencyCalculation );
+
+                case CHEMICAL_PROPERTIES -> densityAlc.alcDensity (
+                        scanner
+                        , optionDensity
+                        , dataReadConcentrationAlc
+                        , interpolation
+                        , interpolationPureAlc
+                        , alcConcentration
+                        , coefficient
+                        , alcCalculation );
 
                 case EXIT -> exit ( scanner , dataReadMoonshine );
-                default -> System.out.println ( "There is no such option, enter again: " );
+                default -> log.log ( Level.INFO , "There is no such option, enter again: " );
             }
         } while (moonshineData != moonshineData.EXIT);
     }
 
-    private MoonshineData getMoonshineData(Scanner scanner, DataReadMoonshine dataReadMoonshine) {
+    private MoonshineData getMoonshineData(Scanner scanner , DataReadMoonshine dataReadMoonshine) {
         boolean moonshineDataOk = false;
         MoonshineData moonshineData = null;
         while (!moonshineDataOk) {
             try {
-                moonshineData = MoonshineData.createFromInt(dataReadMoonshine.getOption ( scanner ));
+                moonshineData = MoonshineData.createFromInt ( dataReadMoonshine.getOption ( scanner ) );
                 moonshineDataOk = true;
             } catch (NoSuchOptionException e) {
-                System.out.println ( e.getMessage() + ", please re-enter:");
+                log.log ( Level.INFO , e.getMessage ( ) + ", please re-enter:" );
             } catch (InputMismatchException ignored) {
-                System.out.println("You entered a value that is not a number, please re-enter:");
+                log.log ( Level.INFO , "You entered a value that is not a number, please re-enter:" );
             }
         }
         return moonshineData;
     }
 
     private void printOptions() {
-        System.out.println ( "Choice the option: " );
+        log.log ( Level.INFO , "Choice the option: " );
         for (MoonshineData moonshineData : MoonshineData.values ( )) {
-            System.out.println ( moonshineData );
+            log.log ( Level.INFO , String.valueOf ( moonshineData ) );
         }
     }
 
     private void exit(Scanner scanner , DataReadMoonshine dataReadMoonshine) {
-        System.out.println ( "exit from the program" );
+        log.log ( Level.INFO , "exit from the program" );
         dataReadMoonshine.close ( scanner );
     }
 }

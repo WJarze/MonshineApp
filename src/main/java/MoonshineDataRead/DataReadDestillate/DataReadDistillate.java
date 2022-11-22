@@ -5,11 +5,16 @@ import exception.NoPositiveNumberException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DataReadDistillate {
+    public static final Logger log = Logger.getLogger (DataReadDistillate.class.getName ( ));
     public int getDistillateOption(Scanner scanner) {
-        System.out.print ( "0 - EXIT " );
-        System.out.print ( "1 - DISTILLATE YIELD " );
+        log.log (Level.INFO ,  """
+        
+        0 - EXIT\s
+        1 - DISTILLATE YIELD\s """ );
         try {
             return scanner.nextInt ( );
         } finally {
@@ -18,7 +23,7 @@ public class DataReadDistillate {
     }
 
     public double getTailsMass(Scanner scanner) {
-        System.out.println ( "enter the tails mass" );
+        log.log ( Level.INFO ,  "enter the tails mass" );
         boolean err = true;
         double tailMass = 0;
         do {
@@ -29,10 +34,10 @@ public class DataReadDistillate {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO , "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoPositiveNumberException e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log (Level.INFO ,  e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);
@@ -40,7 +45,7 @@ public class DataReadDistillate {
     }
 
     public double getTailsPercent(Scanner scanner) {
-        System.out.println ( "enter the tails percent" );
+        log.log (Level.INFO ,  "enter the tails percent" );
         boolean err = true;
         double tailsPercent = 0;
         do {
@@ -51,10 +56,10 @@ public class DataReadDistillate {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO ,  "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoBetweenPercents e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log (Level.INFO ,  e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);
@@ -62,7 +67,7 @@ public class DataReadDistillate {
     }
 
     public double getHeadsMass(Scanner scanner) {
-        System.out.println ( "enter the heads mass" );
+        log.log (Level.INFO ,  "enter the heads mass" );
         boolean err = true;
         double HeadsMass = 0;
         do {
@@ -73,10 +78,10 @@ public class DataReadDistillate {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO ,  "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoPositiveNumberException e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log (Level.INFO ,  e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);
@@ -84,7 +89,7 @@ public class DataReadDistillate {
     }
 
     public double getHeadsPercent(Scanner scanner) {
-        System.out.println ( "enter the heads percent" );
+        log.log (Level.INFO ,  "enter the heads percent" );
         boolean err = true;
         double headsPercent = 0;
         do {
@@ -95,10 +100,10 @@ public class DataReadDistillate {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO ,  "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoBetweenPercents e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log (Level.INFO ,  e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);
@@ -106,7 +111,7 @@ public class DataReadDistillate {
     }
 
     public double getForeshotsMass(Scanner scanner) {
-        System.out.println ( "enter the foreshots mass" );
+        log.log (Level.INFO ,  "enter the foreshots mass" );
         boolean err = true;
         double forestsMass = 0;
         do {
@@ -117,10 +122,10 @@ public class DataReadDistillate {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO , "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoPositiveNumberException e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log (Level.INFO ,  e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);
@@ -128,7 +133,7 @@ public class DataReadDistillate {
     }
 
     public double getForeshotsPercent(Scanner scanner) {
-        System.out.println ( "enter the foreshots percent" );
+        log.log (Level.INFO ,  "enter the foreshots percent" );
         boolean err = true;
         double foreshotsPercent = 0;
         do {
@@ -139,10 +144,10 @@ public class DataReadDistillate {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO ,  "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoBetweenPercents e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log (Level.INFO ,  e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);

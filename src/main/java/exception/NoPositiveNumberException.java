@@ -1,6 +1,6 @@
 package exception;
 
-public class NoPositiveNumberException extends Exception {
+public class NoPositiveNumberException extends RuntimeException {
     public NoPositiveNumberException(String message) {
         super ( message );
     }

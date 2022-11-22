@@ -12,8 +12,11 @@ import exception.NoSuchOptionException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DensityAlc {
+    private static final Logger log = Logger.getLogger ( DensityAlc.class.getName ( ) );
 
     public void alcDensity(
             Scanner scanner
@@ -23,50 +26,53 @@ public class DensityAlc {
             , InterpolationFunctionPureAlc interpolationPureAlc
             , AlcConcentration alcConcentration
             , Coefficient coefficient
-            ,AlcCalculation alcCalculation
+            , AlcCalculation alcCalculation
     ) {
         DensityAlcChoice densityAlcChoice;
 
         do {
             printDensityOptions ( );
-            densityAlcChoice = getDensityAlcChoice( scanner, optionDensity);
+            densityAlcChoice = getDensityAlcChoice ( scanner , optionDensity );
             switch (densityAlcChoice) {
                 case DENSITY_ALCOHOL -> {
-                    System.out.printf ( "%.2f %s" , alcCalculation.density (
+                    log.log ( Level.INFO , String.format ( "%.2f %s" , alcCalculation.density (
                             scanner
                             , dataReadConcentrationAlc
                             , interpolation
                             , alcConcentration
-                            , coefficient ) , "kg/m3" );
-                    System.out.println ( );
+                            , coefficient ) , "kg/m3" + "\n" ) );
                 }
                 case DENSITY_PURE_ALCOHOL -> {
                     alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( scanner ) );
-                    System.out.printf ( "%.2f %s" , alcCalculation.densityPureAlc ( interpolationPureAlc , alcConcentration , coefficient ) , "kg/m3" );
-                    System.out.println ( );
+                    log.log ( Level.INFO ,
+                            String.format ( "%.2f %s" , alcCalculation.densityPureAlc ( interpolationPureAlc
+                                    , alcConcentration
+                                    , coefficient ) , "kg/m3" + "\n" ));
                 }
             }
         } while (densityAlcChoice != DensityAlcChoice.EXIT);
     }
-    private DensityAlcChoice getDensityAlcChoice(Scanner scanner, OptionDensity optionDensity) {
+
+    private DensityAlcChoice getDensityAlcChoice(Scanner scanner , OptionDensity optionDensity) {
         boolean densityAlcChoiceOk = false;
         DensityAlcChoice densityAlcChoice = null;
         while (!densityAlcChoiceOk) {
             try {
-                densityAlcChoice = DensityAlcChoice.createFromInt(optionDensity.getOptionDensity ( scanner ));
+                densityAlcChoice = DensityAlcChoice.createFromInt ( optionDensity.getOptionDensity ( scanner ) );
                 densityAlcChoiceOk = true;
             } catch (NoSuchOptionException e) {
-                System.out.println ( e.getMessage() + ", please re-enter:");
+                log.log ( Level.INFO , e.getMessage ( ) + ", please re-enter:" );
             } catch (InputMismatchException ignored) {
-                System.out.println("You entered a value that is not a number, please re-enter:");
+                log.log ( Level.INFO , "You entered a value that is not a number, please re-enter:" );
             }
         }
         return densityAlcChoice;
     }
+
     private void printDensityOptions() {
-        System.out.println ( "Choice the option: " );
+        log.log ( Level.INFO , "Choice the option: " );
         for (DensityAlcChoice option : DensityAlcChoice.values ( )) {
-            System.out.println ( option );
+            log.log ( Level.INFO , String.valueOf ( option ) );
         }
     }
 

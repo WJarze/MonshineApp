@@ -1,18 +1,21 @@
 package MoonshineDataRead.DataReadYield;
 
 import exception.NoPositiveNumberException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DataReadYield {
+    public static final Logger log = Logger.getLogger(DataReadYield.class.getName ());
     public int getOptionYield(Scanner scanner) {
-        System.out.print ( "0 - EXIT " );
-        System.out.print ( "1 - SUGAR " );
-        System.out.print ( "2 - WHEAT " );
-        System.out.print ( "3 - CORN " );
-        System.out.println ( "4 - POTATO " );
-
+        log.log ( Level.INFO, """
+                 
+                 0 - EXIT\s
+                 1 - SUGAR\s
+                 2 - WHEAT\s
+                 3 - CORN\s
+                 4 - POTATO\s""");
         try {
             return scanner.nextInt ( );
 
@@ -22,7 +25,7 @@ public class DataReadYield {
     }
 
     public double rawMaterialMass(Scanner scanner) {
-        System.out.println ( "Enter the raw material mass" );
+        log.log (Level.INFO , " Enter the raw material mass" );
         boolean err = true;
         double optionRawMaterialMass = 0;
         do {
@@ -33,10 +36,10 @@ public class DataReadYield {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log (Level.INFO ,  "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoPositiveNumberException e) {
-                System.out.println (e.getMessage () );
+                log.log (Level.INFO , e.getMessage () );
                 scanner.nextLine ( );
             }
         } while (err);

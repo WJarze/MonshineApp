@@ -1,15 +1,21 @@
 package MoonshineDataRead;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DataReadMoonshine {
+    protected static final Logger log = Logger.getLogger ( DataReadMoonshine.class.getName ( ) );
+
     public int getOption(Scanner scanner) {
-        System.out.print ( "0 - EXIT " );
-        System.out.print ( "1 - YIELD FROM RAW MATERIAL " );
-        System.out.print ( "2 - YIELD FROM DISTILLATION " );
-        System.out.print ( "3 - CONCENTRATION CONVERSION " );
-        System.out.print ( "4 - TOTAL EFFICIENCY " );
-        System.out.println ( " 5 - CHEMICAL PROPERTIES " );
+        log.log ( Level.INFO , """
+
+                0 - EXIT\s
+                1 - YIELD FROM RAW MATERIAL\s
+                2 - YIELD FROM DISTILLATION\s
+                3 - CONCENTRATION CONVERSION\s
+                4 - TOTAL EFFICIENCY\s
+                5 - CHEMICAL PROPERTIES\s""" );
         try {
             return scanner.nextInt ( );
         } finally {

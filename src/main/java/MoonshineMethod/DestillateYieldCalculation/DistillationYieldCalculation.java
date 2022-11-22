@@ -7,10 +7,12 @@ import exception.NoSuchOptionException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DistillationYieldCalculation {
 
-
+private static final Logger log = Logger.getLogger (DistillationYield.class.getName());
     public void distYieldCalculation(Scanner scanner , Distillate distillate , DataReadDistillate dataReadDistillate ,
                                      DistillationYield distillationYield) {
 
@@ -28,8 +30,7 @@ public class DistillationYieldCalculation {
                     distillate.setTailsWeightConcentration ( dataReadDistillate.getTailsPercent ( scanner ) );
                     distillationYield.sumAlcDistillation ( distillate );
                     distillate.setDistillAlcSum ( distillationYield.sumAlcDistillation ( distillate ) );
-                    System.out.println ( distillate );
-                    System.out.println ( );
+                    log.log ( Level.INFO , "%s\n".formatted ( String.valueOf ( distillate ) ) );
                 }
             }
         } while (distillateOption != DistillateOption.EXIT);
@@ -42,17 +43,17 @@ public class DistillationYieldCalculation {
                 distillateOption = DistillateOption.createFromInt(dataReadDistillate.getDistillateOption ( scanner ));
                 distillateOptionOk = true;
             } catch (NoSuchOptionException e) {
-                System.out.println ( e.getMessage() + ", please re-enter:");
+                log.log ( Level.INFO , e.getMessage() + ", please re-enter:");
             } catch (InputMismatchException ignored) {
-                System.out.println("You entered a value that is not a number, please re-enter:");
+                log.log ( Level.INFO ,"You entered a value that is not a number, please re-enter:");
             }
         }
         return distillateOption;
     }
     private void printDistillateOption() {
-        System.out.println ( "Choice the option: " );
+        log.log ( Level.INFO , "Choice the option: " );
         for (DistillateOption option : DistillateOption.values ( )) {
-            System.out.println ( option );
+            log.log ( Level.INFO , String.valueOf ( option ) );
         }
     }
 }

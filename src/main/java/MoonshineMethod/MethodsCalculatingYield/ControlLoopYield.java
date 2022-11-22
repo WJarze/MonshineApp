@@ -6,9 +6,11 @@ import MoonshineDataRead.DataReadYield.DataReadYield;
 import exception.NoSuchOptionException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControlLoopYield {
-
+public static final Logger log = Logger.getLogger (ControlLoopYield.class.getName ( ));
     public void alcYieldRawMaterial(Scanner scanner , DataReadYield dataReadYield , RawMaterial rawMaterial
             , AlcMethodYield alcMethod) {
         Yield yield;
@@ -18,19 +20,19 @@ public class ControlLoopYield {
             switch (yield) {
                 case SUGAR -> {
                     rawMaterial.setSugarMass ( dataReadYield.rawMaterialMass ( scanner ) );
-                    System.out.println ( alcMethod.alcYieldSugar ( rawMaterial ) );
+                    log.log ( Level.INFO , String.valueOf ( alcMethod.alcYieldSugar ( rawMaterial ) ) );
                 }
                 case WHEAT -> {
                     rawMaterial.setWheatMass ( dataReadYield.rawMaterialMass ( scanner ) );
-                    System.out.println ( alcMethod.alcYieldWheat ( rawMaterial ) );
+                    log.log ( Level.INFO , String.valueOf ( alcMethod.alcYieldWheat ( rawMaterial ) ) );
                 }
                 case CORN -> {
                     rawMaterial.setCornMass ( dataReadYield.rawMaterialMass ( scanner ) );
-                    System.out.println ( alcMethod.alcYieldCorn ( rawMaterial ) );
+                    log.log ( Level.INFO , String.valueOf ( alcMethod.alcYieldCorn ( rawMaterial ) ) );
                 }
                 case POTATO -> {
                     rawMaterial.setPotatoMass ( dataReadYield.rawMaterialMass ( scanner ) );
-                    System.out.println ( alcMethod.alcYieldPotato ( rawMaterial ) );
+                    log.log ( Level.INFO , String.valueOf ( alcMethod.alcYieldPotato ( rawMaterial ) ) );
                 }
             }
         } while (yield != Yield.EXIT);
@@ -43,17 +45,17 @@ public class ControlLoopYield {
                 yield = Yield.createFromInt(dataReadYield.getOptionYield ( scanner ));
                 yieldOk = true;
             } catch (NoSuchOptionException e) {
-                System.out.println ( e.getMessage() + ", please re-enter:");
+                log.log ( Level.INFO , e.getMessage() + ", please re-enter:");
             } catch (InputMismatchException ignored) {
-                System.out.println("You entered a value that is not a number, please re-enter:");
+                log.log ( Level.INFO ,"You entered a value that is not a number, please re-enter:");
             }
         }
         return yield;
     }
     private void printOptions() {
-        System.out.println ( "Choice the option: " );
+        log.log ( Level.INFO , "Choice the option: " );
         for (Yield yield : Yield.values ( )) {
-            System.out.println ( yield );
+            log.log ( Level.INFO , String.valueOf ( yield ) );
         }
     }
 }

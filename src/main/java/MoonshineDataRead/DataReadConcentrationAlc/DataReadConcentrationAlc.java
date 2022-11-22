@@ -4,12 +4,18 @@ import exception.NoBetweenPercents;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DataReadConcentrationAlc {
+    public static final Logger log = Logger.getLogger ( DataReadConcentrationAlc.class.getName ( ) );
+
     public int getOptionConcentration(Scanner scanner) {
-        System.out.print ( "0 - EXIT " );
-        System.out.print ( "1 - CALCULATE WEIGHT CONCENTRATION " );
-        System.out.println ( "2 - CALCULATE VOLUME CONCENTRATION " );
+        log.log ( Level.INFO , """
+                
+                0 - EXIT\s
+                1 - CALCULATE WEIGHT CONCENTRATION\s
+                2 - CALCULATE VOLUME CONCENTRATION\s""" );
         try {
             return scanner.nextInt ( );
         } finally {
@@ -18,7 +24,7 @@ public class DataReadConcentrationAlc {
     }
 
     public double concentration(Scanner scanner) {
-        System.out.println ( "enter the concentration of ethanol" );
+        log.log ( Level.INFO , "enter the concentration of ethanol" );
         boolean err = true;
         double concentration = 0;
         do {
@@ -29,10 +35,10 @@ public class DataReadConcentrationAlc {
                 }
                 err = false;
             } catch (InputMismatchException e) {
-                System.out.println ( "Select the right number: " );
+                log.log ( Level.INFO , "Select the right number: " );
                 scanner.nextLine ( );
             } catch (NoBetweenPercents e) {
-                System.out.println ( e.getMessage ( ) );
+                log.log ( Level.INFO , e.getMessage ( ) );
                 scanner.nextLine ( );
             }
         } while (err);
@@ -40,7 +46,7 @@ public class DataReadConcentrationAlc {
     }
 
     public double temp(Scanner scanner) {
-        System.out.println ( "enter the temperature" );
+        log.log ( Level.INFO , "enter the temperature" );
         return scanner.nextDouble ( );
     }
 

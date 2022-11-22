@@ -6,12 +6,18 @@ import MoonshineData.DataConcentrationAlc.ConcentrationOption;
 import MoonshineDataRead.DataReadConcentrationAlc.DataReadConcentrationAlc;
 import exception.NoSuchOptionException;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static java.lang.String.*;
+import static java.lang.String.valueOf;
 
 public class AlcCalculation {
 
-
+public static final Logger log = Logger.getLogger (AlcConcentration.class.getName ( ));
     public double density(
             Scanner scanner
             , DataReadConcentrationAlc dataReadConcentrationAlc
@@ -62,8 +68,7 @@ public class AlcCalculation {
                             , coefficient );
                     densityPureAlc ( interpolationPureAlc , alcConcentration , coefficient );
                     weightConcentration ( weight , alcConcentration );
-                    System.out.printf ( "%.2f %s" , weightConcentration ( weight , alcConcentration ) , "%" );
-                    System.out.println ( );
+                    log.log ( Level.INFO , "%s\n".formatted ( format ( "%.2f %s" , weightConcentration ( weight , alcConcentration ) , "%" ) ) );
                 }
                 case VOLUME -> {
                     density (
@@ -74,8 +79,7 @@ public class AlcCalculation {
                             , coefficient );
                     densityPureAlc ( interpolationPureAlc , alcConcentration , coefficient );
                     volumeConcentration ( volume , alcConcentration );
-                    System.out.printf ( "%.2f %s" , volumeConcentration ( volume , alcConcentration ) , "%" );
-                    System.out.println ( );
+                    log.log ( Level.INFO , "%s\n".formatted ( format ( "%.2f %s" , volumeConcentration ( volume , alcConcentration ) , "%" ) ) );
                 }
             }
         } while (concentrationOption != ConcentrationOption.EXIT);
@@ -88,17 +92,17 @@ public class AlcCalculation {
                 concentrationOption = ConcentrationOption.createFromInt(dataReadConcentrationAlc.getOptionConcentration ( scanner ));
                 concentrationOptionOk = true;
             } catch (NoSuchOptionException e) {
-                System.out.println ( e.getMessage() + ", please re-enter:");
+                log.log ( Level.INFO , "%s, please re-enter:".formatted ( e.getMessage ( ) ) );
             } catch (InputMismatchException ignored) {
-                System.out.println("You entered a value that is not a number, please re-enter:");
+                log.log (Level.INFO , "You entered a value that is not a number, please re-enter:");
             }
         }
         return concentrationOption;
     }
     private void printConcentrationOptions() {
-        System.out.println ( "Choice the option: " );
+        log.log (Level.INFO , "Choice the option: " );
         for (ConcentrationOption option : ConcentrationOption.values ( )) {
-            System.out.println ( option );
+            log.log ( Level.INFO , valueOf ( option ) );
         }
     }
 
