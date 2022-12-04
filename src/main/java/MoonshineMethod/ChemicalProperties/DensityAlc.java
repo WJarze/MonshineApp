@@ -31,17 +31,14 @@ public class DensityAlc {
         DensityAlcChoice densityAlcChoice;
 
         do {
-            printDensityOptions ( );
             densityAlcChoice = getDensityAlcChoice ( scanner , optionDensity );
             switch (densityAlcChoice) {
-                case DENSITY_ALCOHOL -> {
-                    log.log ( Level.INFO , String.format ( "%.2f %s" , alcCalculation.density (
-                            scanner
-                            , dataReadConcentrationAlc
-                            , interpolation
-                            , alcConcentration
-                            , coefficient ) , "kg/m3" + "\n" ) );
-                }
+                case DENSITY_ALCOHOL -> log.log ( Level.INFO , String.format ( "%.2f %s" , alcCalculation.density (
+                        scanner
+                        , dataReadConcentrationAlc
+                        , interpolation
+                        , alcConcentration
+                        , coefficient ) , "kg/m3" + "\n" ) );
                 case DENSITY_PURE_ALCOHOL -> {
                     alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( scanner ) );
                     log.log ( Level.INFO ,
@@ -68,12 +65,4 @@ public class DensityAlc {
         }
         return densityAlcChoice;
     }
-
-    private void printDensityOptions() {
-        log.log ( Level.INFO , "Choice the option: " );
-        for (DensityAlcChoice option : DensityAlcChoice.values ( )) {
-            log.log ( Level.INFO , String.valueOf ( option ) );
-        }
-    }
-
 }

@@ -18,7 +18,6 @@ private static final Logger log = Logger.getLogger (DistillationYield.class.getN
 
         DistillateOption distillateOption;
         do {
-            printDistillateOption ( );
             distillateOption = getDistillateOption( scanner, dataReadDistillate);
             switch (distillateOption) {
                 case DISTILLATE_YIELD -> {
@@ -49,11 +48,5 @@ private static final Logger log = Logger.getLogger (DistillationYield.class.getN
             }
         }
         return distillateOption;
-    }
-    private void printDistillateOption() {
-        log.log ( Level.INFO , "Choice the option: " );
-        for (DistillateOption option : DistillateOption.values ( )) {
-            log.log ( Level.INFO , String.valueOf ( option ) );
-        }
     }
 }

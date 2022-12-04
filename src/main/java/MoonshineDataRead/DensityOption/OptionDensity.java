@@ -9,7 +9,7 @@ public class OptionDensity {
 
     public int getOptionDensity(Scanner scanner) {
         log.log ( Level.INFO , """
-                                
+                    
                 0 - EXIT\s
                 1 - DENSITY ALCOHOL\s
                 2 - DENSITY PURE ALCOHOL\s"""

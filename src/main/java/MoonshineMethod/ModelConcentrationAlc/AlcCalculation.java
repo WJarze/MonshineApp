@@ -56,7 +56,6 @@ public static final Logger log = Logger.getLogger (AlcConcentration.class.getNam
         ConcentrationOption concentrationOption;
 
         do {
-            printConcentrationOptions ( );
             concentrationOption = getConcentrationOption( scanner, dataReadConcentrationAlc) ;
             switch (concentrationOption) {
                 case WEIGHT -> {
@@ -99,12 +98,4 @@ public static final Logger log = Logger.getLogger (AlcConcentration.class.getNam
         }
         return concentrationOption;
     }
-    private void printConcentrationOptions() {
-        log.log (Level.INFO , "Choice the option: " );
-        for (ConcentrationOption option : ConcentrationOption.values ( )) {
-            log.log ( Level.INFO , valueOf ( option ) );
-        }
-    }
-
-
 }

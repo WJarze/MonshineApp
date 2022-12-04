@@ -61,7 +61,6 @@ public class MoonshineMethod {
         MoonshineData moonshineData;
 
         do {
-            printOptions ( );
             moonshineData = getMoonshineData ( scanner , dataReadMoonshine );
             switch (moonshineData) {
                 case YIELD_FROM_RAW_MATERIAL ->
@@ -116,13 +115,6 @@ public class MoonshineMethod {
             }
         }
         return moonshineData;
-    }
-
-    private void printOptions() {
-        log.log ( Level.INFO , "Choice the option: " );
-        for (MoonshineData moonshineData : MoonshineData.values ( )) {
-            log.log ( Level.INFO , String.valueOf ( moonshineData ) );
-        }
     }
 
     private void exit(Scanner scanner , DataReadMoonshine dataReadMoonshine) {

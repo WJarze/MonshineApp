@@ -15,7 +15,6 @@ public static final Logger log = Logger.getLogger (ControlLoopYield.class.getNam
             , AlcMethodYield alcMethod) {
         Yield yield;
         do {
-            printOptions ( );
             yield = getMoonshineData( scanner, dataReadYield);
             switch (yield) {
                 case SUGAR -> {
@@ -52,10 +51,5 @@ public static final Logger log = Logger.getLogger (ControlLoopYield.class.getNam
         }
         return yield;
     }
-    private void printOptions() {
-        log.log ( Level.INFO , "Choice the option: " );
-        for (Yield yield : Yield.values ( )) {
-            log.log ( Level.INFO , String.valueOf ( yield ) );
-        }
-    }
+
 }

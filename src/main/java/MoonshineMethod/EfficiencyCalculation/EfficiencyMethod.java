@@ -19,7 +19,6 @@ private static final Logger log = Logger.getLogger (EfficiencyMethod.class.getNa
             , EfficiencyCalculation efficiencyCalculation) {
         EfficiencyOption efficiencyOption;
         do {
-            printEfficiencyOptions ( );
             efficiencyOption = getEfficiencyAlcChoice( scanner, dataReadEfficiency);
             switch (efficiencyOption) {
                 case EFFICIENCY -> {
@@ -46,11 +45,5 @@ private static final Logger log = Logger.getLogger (EfficiencyMethod.class.getNa
             }
         }
         return efficiencyOption;
-    }
-    private void printEfficiencyOptions() {
-        log.log ( Level.INFO , "Choice the option: " );
-        for (EfficiencyOption option : EfficiencyOption.values ( )) {
-            log.log ( Level.INFO , String.valueOf ( option ) );
-        }
     }
 }
