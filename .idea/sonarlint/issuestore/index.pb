@@ -12,12 +12,6 @@ Asrc/main/java/MoonshineData/DataConcentrationAlc/Coefficient.java,1\2\12f0c5c4
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 l
 <src/main/java/MoonshineData/DestillationData/Distillate.java,6\5\65bbdddd96a625f201bd19050fccf6a49db11b37
-l
-<src/main/java/MoonshineData/DataAlcYield/AlcYieldResult.java,c\b\cba4e3b3fcfa501595162cf7a39f94f325710b30
-i
-9src/main/java/MoonshineData/DataAlcYield/RawMaterial.java,c\2\c2eb8cde6810d50c6b75a684220f9c352e97273f
-c
-3src/main/java/MoonshineData/DataAlcYield/Yield.java,c\6\c6d09ca07e421687b1ca2b84073f05d65893bd93
 v
 Fsrc/main/java/MoonshineData/DataConcentrationAlc/AlcConcentration.java,2\9\29bed622e9ae994c71a15b9cffd45f89939b4c92
 n
@@ -34,13 +28,5 @@ z
 Jsrc/main/java/MoonshineDataRead/DataReadDestillate/DataReadDistillate.java,8\d\8d59fb62587bbaa3a2c350084ae1d9765be6ff1e
 z
 Jsrc/main/java/MoonshineDataRead/DataReadEfficiency/DataReadEfficiency.java,d\7\d7a02983125206a0fdbadcb6bab409cae7380f9e
-f
-6src/main/java/MoonshineDataRead/DataReadMoonshine.java,8\a\8ad243179d31c7ba3fbacbff4b5c891afe679488
 p
 @src/main/java/MoonshineDataRead/DataReadYield/DataReadYield.java,c\1\c1b254705eff4df0c6d663241204f2ffe1b3c0b4
-^
-.src/main/java/exception/NoBetweenPercents.java,b\f\bfb4f39db7d8e8d50a2b0e4d44d0985159384bf2
-f
-6src/main/java/exception/NoPositiveNumberException.java,7\3\73406ba442629e3be80a17f6e24b7b41ca6ea39b
-b
-2src/main/java/exception/NoSuchOptionException.java,c\7\c719524a72a356e2e081404c41bb7b89ed57626c

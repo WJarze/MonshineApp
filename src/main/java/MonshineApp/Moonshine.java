@@ -55,7 +55,7 @@ public class Moonshine {
     DensityAlc densityAlc = new DensityAlc ( );
     OptionDensity optionDensity = new OptionDensity ( );
 
-    public MoonshineMethod moonshineAppMethod() throws NoSuchOptionException {
+    public void moonshineAppMethod() throws NoSuchOptionException {
         moonshine.moonshineMethod ( scanner
                 , dataReadDistillate
                 , dataReadMoonshine
@@ -80,6 +80,5 @@ public class Moonshine {
                 , efficiencyCalculation
                 , densityAlc
                 , optionDensity);
-                return moonshine ;
     }
 }

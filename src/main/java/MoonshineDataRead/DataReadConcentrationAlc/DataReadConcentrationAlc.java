@@ -30,9 +30,7 @@ public class DataReadConcentrationAlc {
         do {
             try {
                 concentration = scanner.nextDouble ( ) / 100;
-                if ( concentration < 0 || concentration > 1 ) {
-                    throw new NoBetweenPercents ( "Choose a number between 0 - 100, no number " + concentration * 100 );
-                }
+                concentrationValidator ( concentration );
                 err = false;
             } catch (InputMismatchException e) {
                 log.log ( Level.INFO , "Select the right number: " );
@@ -43,6 +41,12 @@ public class DataReadConcentrationAlc {
             }
         } while (err);
         return concentration;
+    }
+
+    private static void concentrationValidator(double concentration) {
+        if ( (concentration < 0) || (concentration > 1) ) {
+            throw new NoBetweenPercents ( "Choose a number between 0 - 100, no number " + concentration * 100 );
+        }
     }
 
     public double temp(Scanner scanner) {
