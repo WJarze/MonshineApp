@@ -18,7 +18,7 @@ public class InterpolationFunction {
     protected double vectorB(Coefficient coefficient , AlcConcentration alcConcentration) {
         double sumaB = 0;
         for (int i = 0; i < coefficient.getB ( ).length; i++) {
-            sumaB += coefficient.getB ( )[ i ] * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , i + 1 );
+            sumaB += coefficient.getB ( )[ i ] * Math.pow ( (alcConcentration.getTemperature ( ) - 20.0) , i + 1.0 );
         }
         return sumaB;
     }
@@ -27,7 +27,7 @@ public class InterpolationFunction {
         double sumaC = 0;
         double dC = 0;
         for (int i = 0; i < coefficient.getC ( ).length; i++) {
-            sumaC += coefficient.getC ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1 ) * (alcConcentration.getTemperature ( ) - 20);
+            sumaC += coefficient.getC ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1.0 ) * (alcConcentration.getTemperature ( ) - 20.0);
             dC = sumaC;
         }
         return dC;
@@ -37,7 +37,7 @@ public class InterpolationFunction {
         double sumaD = 0;
         double dD = 0;
         for (int i = 0; i < coefficient.getD ( ).length; i++) {
-            sumaD += coefficient.getD ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , 2 );
+            sumaD += coefficient.getD ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1.0 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20.0) , 2 );
             dD = sumaD;
         }
         return dD;
@@ -47,7 +47,7 @@ public class InterpolationFunction {
         double sumaE = 0;
         double dE = 0;
         for (int i = 0; i < coefficient.getE ( ).length; i++) {
-            sumaE += coefficient.getE ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , 3 );
+            sumaE += coefficient.getE ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1.0 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20.0) , 3 );
             dE = sumaE;
         }
         return dE;
@@ -57,7 +57,7 @@ public class InterpolationFunction {
         double sumaF = 0;
         double dF = 0;
         for (int i = 0; i < coefficient.getF ( ).length; i++) {
-            sumaF += coefficient.getF ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , 4 );
+            sumaF += coefficient.getF ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1.0 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , 4 );
             dF = sumaF;
         }
         return dF;
@@ -67,7 +67,7 @@ public class InterpolationFunction {
         double sumaG = 0;
         double dG = 0;
         for (int i = 0; i < coefficient.getG ( ).length; i++) {
-            sumaG += coefficient.getG ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , 5 );
+            sumaG += coefficient.getG ( )[ i ] * Math.pow ( alcConcentration.getAlcConcentration ( ) , i + 1.0 ) * Math.pow ( (alcConcentration.getTemperature ( ) - 20) , 5 );
             dG = sumaG;
         }
         return dG;

@@ -1,13 +1,13 @@
 package MoonshineDataRead.DensityOption;
 
-import java.util.Scanner;
+import MoonshineDataRead.InputReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OptionDensity {
     public static final Logger log = Logger.getLogger ( OptionDensity.class.getName ( ) );
 
-    public int getOptionDensity(Scanner scanner) {
+    public int getOptionDensity(InputReader inputReader) {
         log.log ( Level.INFO , """
                     
                 0 - EXIT\s
@@ -16,9 +16,9 @@ public class OptionDensity {
         );
 
         try {
-            return scanner.nextInt ( );
+            return inputReader.nextInt ( );
         } finally {
-            scanner.nextLine ( );
+            inputReader.nextLine ( );
         }
     }
 }

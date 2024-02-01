@@ -5,13 +5,13 @@ import MoonshineData.DataConcentrationAlc.Coefficient;
 import MoonshineData.DensityChoice.DensityAlcChoice;
 import MoonshineDataRead.DataReadConcentrationAlc.DataReadConcentrationAlc;
 import MoonshineDataRead.DensityOption.OptionDensity;
+import MoonshineDataRead.InputReader;
 import MoonshineMethod.ModelConcentrationAlc.AlcCalculation;
 import MoonshineMethod.ModelConcentrationAlc.InterpolationFunction;
 import MoonshineMethod.ModelConcentrationAlc.InterpolationFunctionPureAlc;
 import exception.NoSuchOptionException;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +19,7 @@ public class DensityAlc {
     private static final Logger log = Logger.getLogger ( DensityAlc.class.getName ( ) );
 
     public void alcDensity(
-            Scanner scanner
+            InputReader inputReader
             , OptionDensity optionDensity
             , DataReadConcentrationAlc dataReadConcentrationAlc
             , InterpolationFunction interpolation
@@ -31,16 +31,16 @@ public class DensityAlc {
         DensityAlcChoice densityAlcChoice;
 
         do {
-            densityAlcChoice = getDensityAlcChoice ( scanner , optionDensity );
+            densityAlcChoice = getDensityAlcChoice ( inputReader , optionDensity );
             switch (densityAlcChoice) {
                 case DENSITY_ALCOHOL -> log.log ( Level.INFO , String.format ( "%.2f %s" , alcCalculation.density (
-                        scanner
+                        inputReader
                         , dataReadConcentrationAlc
                         , interpolation
                         , alcConcentration
                         , coefficient ) , "kg/m3" + "\n" ) );
                 case DENSITY_PURE_ALCOHOL -> {
-                    alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( scanner ) );
+                    alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( inputReader ) );
                     log.log ( Level.INFO ,
                             String.format ( "%.2f %s" , alcCalculation.densityPureAlc ( interpolationPureAlc
                                     , alcConcentration
@@ -50,12 +50,12 @@ public class DensityAlc {
         } while (densityAlcChoice != DensityAlcChoice.EXIT);
     }
 
-    private DensityAlcChoice getDensityAlcChoice(Scanner scanner , OptionDensity optionDensity) {
+    private DensityAlcChoice getDensityAlcChoice(InputReader inputReader , OptionDensity optionDensity) {
         boolean densityAlcChoiceOk = false;
         DensityAlcChoice densityAlcChoice = null;
         while (!densityAlcChoiceOk) {
             try {
-                densityAlcChoice = DensityAlcChoice.createFromInt ( optionDensity.getOptionDensity ( scanner ) );
+                densityAlcChoice = DensityAlcChoice.createFromInt ( optionDensity.getOptionDensity ( inputReader ) );
                 densityAlcChoiceOk = true;
             } catch (NoSuchOptionException e) {
                 log.log ( Level.INFO , e.getMessage ( ) + ", please re-enter:" );

@@ -1,4 +1,4 @@
-package MonshineApp;
+package MoonshineMethod;
 
 import MoonshineData.DataAlcYield.RawMaterial;
 import MoonshineData.DataConcentrationAlc.AlcConcentration;
@@ -25,12 +25,12 @@ import MoonshineMethod.ModelConcentrationAlc.InterpolationFunction;
 import MoonshineMethod.ModelConcentrationAlc.InterpolationFunctionPureAlc;
 import MoonshineMethod.ModelConcentrationAlc.Volume;
 import MoonshineMethod.ModelConcentrationAlc.Weight;
-import MoonshineMethod.MoonshineMethod;
-import exception.NoSuchOptionException;
-
 import java.util.Scanner;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-public class Moonshine {
+
+class MoonshineMethodTest {
     MoonshineMethod moonshine = new MoonshineMethod ( );
     Scanner scanner = new Scanner ( System.in );
     InputReader inputReader = new InputReaderScanner ( scanner );
@@ -57,37 +57,57 @@ public class Moonshine {
     EfficiencyCalculation efficiencyCalculation = new EfficiencyCalculation ( );
     DensityAlc densityAlc = new DensityAlc ( );
     OptionDensity optionDensity = new OptionDensity ( );
-    public Moonshine(InputReader inputReader) {
-        this.inputReader = inputReader;
-    }
+    @Test
+    void moonshineMethod() {
 
-    public Moonshine() {
-    }
-
-    public void moonshineAppMethod() throws NoSuchOptionException {
-        moonshine.moonshineMethod ( inputReader
-                , dataReadDistillate
-                , dataReadMoonshine
-                , distillationYield
-                , distillate
-                , distillationYieldCalculation
-                , controlLoopYield
-                , rawMaterial
-                , alcMethod
-                , dataReadYield
-                , alcCalculation
-                , dataReadConcentrationAlc
-                , interpolation
-                , interpolationPureAlc
-                , alcConcentration
-                , coefficient
-                , volume
-                , weight
-                , efficiencyMethod
-                , dataReadEfficiency
-                , dataEfficiency
-                , efficiencyCalculation
-                , densityAlc
-                , optionDensity);
+        MoonshineMethod mock = Mockito.mock(MoonshineMethod.class);
+        mock.moonshineMethod (  inputReader
+                ,  dataReadDistillate
+                ,  dataReadMoonshine
+                ,  distillationYield
+                ,  distillate
+                ,  distillationYieldCalculation
+                ,  controlLoopYield
+                ,  rawMaterial
+                ,  alcMethod
+                ,  dataReadYield
+                ,  alcCalculation
+                ,  dataReadConcentrationAlc
+                ,  interpolation
+                ,  interpolationPureAlc
+                ,  alcConcentration
+                ,  coefficient
+                ,  volume
+                ,  weight
+                ,  efficiencyMethod
+                ,  dataReadEfficiency
+                ,  dataEfficiency
+                ,  efficiencyCalculation
+                ,  densityAlc
+                ,  optionDensity);
+        Mockito.verify(mock, Mockito.times(1)).moonshineMethod (  inputReader
+                ,  dataReadDistillate
+                ,  dataReadMoonshine
+                ,  distillationYield
+                ,  distillate
+                ,  distillationYieldCalculation
+                ,  controlLoopYield
+                ,  rawMaterial
+                ,  alcMethod
+                ,  dataReadYield
+                ,  alcCalculation
+                ,  dataReadConcentrationAlc
+                ,  interpolation
+                ,  interpolationPureAlc
+                ,  alcConcentration
+                ,  coefficient
+                ,  volume
+                ,  weight
+                ,  efficiencyMethod
+                ,  dataReadEfficiency
+                ,  dataEfficiency
+                ,  efficiencyCalculation
+                ,  densityAlc
+                ,  optionDensity);
     }
 }

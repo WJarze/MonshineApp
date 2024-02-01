@@ -4,28 +4,25 @@ import MoonshineData.DataConcentrationAlc.AlcConcentration;
 import MoonshineData.DataConcentrationAlc.Coefficient;
 import MoonshineData.DataConcentrationAlc.ConcentrationOption;
 import MoonshineDataRead.DataReadConcentrationAlc.DataReadConcentrationAlc;
+import MoonshineDataRead.InputReader;
 import exception.NoSuchOptionException;
-
-import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.lang.String.*;
-import static java.lang.String.valueOf;
+import static java.lang.String.format;
 
 public class AlcCalculation {
 
 public static final Logger log = Logger.getLogger (AlcConcentration.class.getName ( ));
     public double density(
-            Scanner scanner
+            InputReader inputReader
             , DataReadConcentrationAlc dataReadConcentrationAlc
             , InterpolationFunction interpolation
             , AlcConcentration alcConcentration
             , Coefficient coefficient) {
-        alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( scanner ) );
-        alcConcentration.setAlcConcentration ( dataReadConcentrationAlc.concentration ( scanner ) );
+        alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( inputReader ) );
+        alcConcentration.setAlcConcentration ( dataReadConcentrationAlc.concentration ( inputReader) );
         alcConcentration.setDensity ( interpolation.density ( coefficient , alcConcentration ) );
         return alcConcentration.getDensity ( );
     }
@@ -45,7 +42,7 @@ public static final Logger log = Logger.getLogger (AlcConcentration.class.getNam
     }
 
     public void alcConversion(
-            Scanner scanner
+            InputReader inputReader
             , DataReadConcentrationAlc dataReadConcentrationAlc
             , InterpolationFunction interpolation
             , InterpolationFunctionPureAlc interpolationPureAlc
@@ -56,11 +53,11 @@ public static final Logger log = Logger.getLogger (AlcConcentration.class.getNam
         ConcentrationOption concentrationOption;
 
         do {
-            concentrationOption = getConcentrationOption( scanner, dataReadConcentrationAlc) ;
+            concentrationOption = getConcentrationOption( inputReader, dataReadConcentrationAlc) ;
             switch (concentrationOption) {
                 case WEIGHT -> {
                     density (
-                            scanner
+                            inputReader
                             , dataReadConcentrationAlc
                             , interpolation
                             , alcConcentration
@@ -71,7 +68,7 @@ public static final Logger log = Logger.getLogger (AlcConcentration.class.getNam
                 }
                 case VOLUME -> {
                     density (
-                            scanner
+                            inputReader
                             , dataReadConcentrationAlc
                             , interpolation
                             , alcConcentration
@@ -83,12 +80,12 @@ public static final Logger log = Logger.getLogger (AlcConcentration.class.getNam
             }
         } while (concentrationOption != ConcentrationOption.EXIT);
     }
-    private ConcentrationOption  getConcentrationOption(Scanner scanner, DataReadConcentrationAlc dataReadConcentrationAlc) {
+    private ConcentrationOption  getConcentrationOption(InputReader inputReader, DataReadConcentrationAlc dataReadConcentrationAlc) {
         boolean concentrationOptionOk = false;
         ConcentrationOption concentrationOption = null;
         while (!concentrationOptionOk) {
             try {
-                concentrationOption = ConcentrationOption.createFromInt(dataReadConcentrationAlc.getOptionConcentration ( scanner ));
+                concentrationOption = ConcentrationOption.createFromInt(dataReadConcentrationAlc.getOptionConcentration (  inputReader ));
                 concentrationOptionOk = true;
             } catch (NoSuchOptionException e) {
                 log.log ( Level.INFO , "%s, please re-enter:".formatted ( e.getMessage ( ) ) );

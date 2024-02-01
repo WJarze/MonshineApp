@@ -5,9 +5,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DataReadMoonshine {
-    protected static final Logger log = Logger.getLogger ( DataReadMoonshine.class.getName ( ) );
+    public static final Logger log = Logger.getLogger ( DataReadMoonshine.class.getName ( ) );
 
-    public int getOption(Scanner scanner) {
+    public int getOption(InputReader inputReader) {
         log.log ( Level.INFO , """
 
                 0 - EXIT\s
@@ -17,14 +17,14 @@ public class DataReadMoonshine {
                 4 - TOTAL EFFICIENCY\s
                 5 - CHEMICAL PROPERTIES\s""" );
         try {
-            return scanner.nextInt ( );
+            return inputReader.nextInt ( );
         } finally {
-            scanner.nextLine ( );
+            inputReader.nextLine ( );
         }
     }
 
-    public void close(Scanner scanner) {
-        scanner.close ( );
+    public void close(InputReader inputReader) {
+        inputReader.close ( );
     }
 
 }

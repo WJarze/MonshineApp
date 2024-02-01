@@ -12,6 +12,7 @@ import MoonshineDataRead.DataReadEfficiency.DataReadEfficiency;
 import MoonshineDataRead.DataReadMoonshine;
 import MoonshineDataRead.DataReadYield.DataReadYield;
 import MoonshineDataRead.DensityOption.OptionDensity;
+import MoonshineDataRead.InputReader;
 import MoonshineMethod.ChemicalProperties.DensityAlc;
 import MoonshineMethod.DestillateYieldCalculation.DistillationYield;
 import MoonshineMethod.DestillateYieldCalculation.DistillationYieldCalculation;
@@ -34,7 +35,7 @@ public class MoonshineMethod {
     private static final Logger log = Logger.getLogger ( MoonshineData.class.getName ( ) );
 
     public void moonshineMethod(
-            Scanner scanner
+            InputReader inputReader
             , DataReadDistillate dataReadDistillate
             , DataReadMoonshine dataReadMoonshine
             , DistillationYield distillationYield , Distillate distillate
@@ -61,16 +62,16 @@ public class MoonshineMethod {
         MoonshineData moonshineData;
 
         do {
-            moonshineData = getMoonshineData ( scanner , dataReadMoonshine );
+            moonshineData = getMoonshineData ( inputReader , dataReadMoonshine );
             switch (moonshineData) {
                 case YIELD_FROM_RAW_MATERIAL ->
-                        controlLoopYield.alcYieldRawMaterial ( scanner , dataReadYield , rawMaterial , alcMethod );
+                        controlLoopYield.alcYieldRawMaterial ( inputReader , dataReadYield , rawMaterial , alcMethod );
 
                 case YIELD_FROM_DISTILLATION ->
-                        distillationYieldCalculation.distYieldCalculation ( scanner , distillate , dataReadDistillate , distillationYield );
+                        distillationYieldCalculation.distYieldCalculation ( inputReader , distillate , dataReadDistillate , distillationYield );
 
                 case CONCENTRATION_CONVERSION -> alcCalculation.alcConversion (
-                        scanner
+                        inputReader
                         , dataReadConcentrationAlc
                         , interpolation
                         , interpolationPureAlc
@@ -80,13 +81,13 @@ public class MoonshineMethod {
                         , weight );
 
                 case TOTAL_EFFICIENCY -> efficiencyMethod.summaryEfficiency (
-                        scanner
+                        inputReader
                         , dataReadEfficiency
                         , dataEfficiency
                         , efficiencyCalculation );
 
                 case CHEMICAL_PROPERTIES -> densityAlc.alcDensity (
-                        scanner
+                        inputReader
                         , optionDensity
                         , dataReadConcentrationAlc
                         , interpolation
@@ -95,18 +96,18 @@ public class MoonshineMethod {
                         , coefficient
                         , alcCalculation );
 
-                case EXIT -> exit ( scanner , dataReadMoonshine );
+                case EXIT -> exit ( inputReader , dataReadMoonshine );
                 default -> log.log ( Level.INFO , "There is no such option, enter again: " );
             }
         } while (moonshineData != moonshineData.EXIT);
     }
 
-    private MoonshineData getMoonshineData(Scanner scanner , DataReadMoonshine dataReadMoonshine) {
+    private MoonshineData getMoonshineData(InputReader inputReader , DataReadMoonshine dataReadMoonshine) {
         boolean moonshineDataOk = false;
         MoonshineData moonshineData = null;
         while (!moonshineDataOk) {
             try {
-                moonshineData = MoonshineData.createFromInt ( dataReadMoonshine.getOption ( scanner ) );
+                moonshineData = MoonshineData.createFromInt ( dataReadMoonshine.getOption ( inputReader ) );
                 moonshineDataOk = true;
             } catch (NoSuchOptionException e) {
                 log.log ( Level.INFO , e.getMessage ( ) + ", please re-enter:" );
@@ -117,8 +118,8 @@ public class MoonshineMethod {
         return moonshineData;
     }
 
-    private void exit(Scanner scanner , DataReadMoonshine dataReadMoonshine) {
+    private void exit(InputReader inputReader , DataReadMoonshine dataReadMoonshine) {
         log.log ( Level.INFO , "exit from the program" );
-        dataReadMoonshine.close ( scanner );
+        dataReadMoonshine.close ( inputReader );
     }
 }
