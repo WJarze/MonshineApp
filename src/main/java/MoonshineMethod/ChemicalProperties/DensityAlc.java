@@ -34,7 +34,8 @@ public class DensityAlc {
             densityAlcChoice = getDensityAlcChoice ( inputReader , optionDensity );
             switch (densityAlcChoice) {
                 case DENSITY_ALCOHOL -> log.log ( Level.INFO ,
-                        msgDensityAlc ( inputReader ,
+                        msgDensityAlc (
+                                inputReader ,
                                 dataReadConcentrationAlc ,
                                 interpolation ,
                                 alcConcentration ,
@@ -45,7 +46,8 @@ public class DensityAlc {
                 case DENSITY_PURE_ALCOHOL -> {
                     alcConcentration.setTemperature ( dataReadConcentrationAlc.temp ( inputReader ) );
                     log.log ( Level.INFO ,
-                            msgDensityPureAlc ( interpolationPureAlc ,
+                            msgDensityPureAlc (
+                                    interpolationPureAlc ,
                                     alcConcentration ,
                                     coefficient ,
                                     alcCalculation ) );
@@ -54,14 +56,14 @@ public class DensityAlc {
         } while (densityAlcChoice != DensityAlcChoice.EXIT);
     }
 
-    private static String msgDensityPureAlc(InterpolationFunctionPureAlc interpolationPureAlc , AlcConcentration alcConcentration , Coefficient coefficient , AlcCalculation alcCalculation) {
+    public static String msgDensityPureAlc(InterpolationFunctionPureAlc interpolationPureAlc , AlcConcentration alcConcentration , Coefficient coefficient , AlcCalculation alcCalculation) {
         return String.format ( "%.2f %s"
                 , alcCalculation.densityPureAlc ( interpolationPureAlc
                         , alcConcentration
                         , coefficient ) , "kg/m3" + "\n" );
     }
 
-    private static String msgDensityAlc(InputReader inputReader , DataReadConcentrationAlc dataReadConcentrationAlc , InterpolationFunction interpolation , AlcConcentration alcConcentration , Coefficient coefficient , AlcCalculation alcCalculation) {
+    public static String msgDensityAlc(InputReader inputReader , DataReadConcentrationAlc dataReadConcentrationAlc , InterpolationFunction interpolation , AlcConcentration alcConcentration , Coefficient coefficient , AlcCalculation alcCalculation) {
         return String.format ( "%.2f %s" ,
                 alcCalculation.density ( inputReader
                         , dataReadConcentrationAlc
@@ -69,7 +71,7 @@ public class DensityAlc {
                         , alcConcentration , coefficient ) , "kg/m3" + "\n" );
     }
 
-    private DensityAlcChoice getDensityAlcChoice(InputReader inputReader , OptionDensity optionDensity) {
+    DensityAlcChoice getDensityAlcChoice(InputReader inputReader , OptionDensity optionDensity) {
         boolean densityAlcChoiceOk = false;
         DensityAlcChoice densityAlcChoice = null;
         while (!densityAlcChoiceOk) {

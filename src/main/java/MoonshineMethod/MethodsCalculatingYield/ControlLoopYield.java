@@ -36,7 +36,7 @@ public static final Logger log = Logger.getLogger (ControlLoopYield.class.getNam
             }
         } while (yield != Yield.EXIT);
     }
-    private Yield  getMoonshineData(InputReader inputReader , DataReadYield dataReadYield) {
+    public Yield  getMoonshineData(InputReader inputReader , DataReadYield dataReadYield) {
         boolean yieldOk = false;
         Yield yield = null;
         while (!yieldOk) {

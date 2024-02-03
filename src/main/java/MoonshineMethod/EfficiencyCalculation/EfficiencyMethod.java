@@ -31,7 +31,7 @@ private static final Logger log = Logger.getLogger (EfficiencyMethod.class.getNa
             }
         } while (efficiencyOption != EfficiencyOption.EXIT);
     }
-    private EfficiencyOption getEfficiencyAlcChoice(InputReader inputReader , DataReadEfficiency dataReadEfficiency) {
+    public EfficiencyOption getEfficiencyAlcChoice(InputReader inputReader , DataReadEfficiency dataReadEfficiency) {
         boolean efficiencyOptionOk = false;
         EfficiencyOption efficiencyOption = null;
         while (!efficiencyOptionOk) {

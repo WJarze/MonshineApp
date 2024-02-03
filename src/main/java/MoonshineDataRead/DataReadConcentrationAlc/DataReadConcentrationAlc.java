@@ -45,7 +45,7 @@ public class DataReadConcentrationAlc {
         return concentration;
     }
 
-    private static void concentrationValidator(double concentration) {
+    public static void concentrationValidator(double concentration) {
         if ( (concentration < 0) || (concentration > 1) ) {
             throw new NoBetweenPercents ( "Choose a number between 0 - 100, no number " + concentration * 100 );
         }

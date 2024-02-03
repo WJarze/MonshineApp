@@ -73,7 +73,7 @@ public class InterpolationFunction {
         return dG;
     }
 
-    protected double density(Coefficient coefficient , AlcConcentration alcConcentration) {
+    public double density(Coefficient coefficient , AlcConcentration alcConcentration) {
 
         double A = vectorA ( coefficient , alcConcentration );
         double B = vectorB ( coefficient , alcConcentration );

@@ -7,6 +7,10 @@ public class AlcYieldResult {
         this.alcYield = alcYield;
     }
 
+    public double getAlcYield() {
+        return alcYield;
+    }
+
     @Override
     public String toString() {
         return String.format ( "pure alcohol from raw material %.2f kg" , alcYield );

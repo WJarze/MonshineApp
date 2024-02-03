@@ -25,9 +25,14 @@ import MoonshineMethod.ModelConcentrationAlc.InterpolationFunction;
 import MoonshineMethod.ModelConcentrationAlc.InterpolationFunctionPureAlc;
 import MoonshineMethod.ModelConcentrationAlc.Volume;
 import MoonshineMethod.ModelConcentrationAlc.Weight;
+import exception.NoSuchOptionException;
 import java.util.Scanner;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 class MoonshineMethodTest {
@@ -57,57 +62,58 @@ class MoonshineMethodTest {
     EfficiencyCalculation efficiencyCalculation = new EfficiencyCalculation ( );
     DensityAlc densityAlc = new DensityAlc ( );
     OptionDensity optionDensity = new OptionDensity ( );
+
     @Test
     void moonshineMethod() {
 
-        MoonshineMethod mock = Mockito.mock(MoonshineMethod.class);
-        mock.moonshineMethod (  inputReader
-                ,  dataReadDistillate
-                ,  dataReadMoonshine
-                ,  distillationYield
-                ,  distillate
-                ,  distillationYieldCalculation
-                ,  controlLoopYield
-                ,  rawMaterial
-                ,  alcMethod
-                ,  dataReadYield
-                ,  alcCalculation
-                ,  dataReadConcentrationAlc
-                ,  interpolation
-                ,  interpolationPureAlc
-                ,  alcConcentration
-                ,  coefficient
-                ,  volume
-                ,  weight
-                ,  efficiencyMethod
-                ,  dataReadEfficiency
-                ,  dataEfficiency
-                ,  efficiencyCalculation
-                ,  densityAlc
-                ,  optionDensity);
-        Mockito.verify(mock, Mockito.times(1)).moonshineMethod (  inputReader
-                ,  dataReadDistillate
-                ,  dataReadMoonshine
-                ,  distillationYield
-                ,  distillate
-                ,  distillationYieldCalculation
-                ,  controlLoopYield
-                ,  rawMaterial
-                ,  alcMethod
-                ,  dataReadYield
-                ,  alcCalculation
-                ,  dataReadConcentrationAlc
-                ,  interpolation
-                ,  interpolationPureAlc
-                ,  alcConcentration
-                ,  coefficient
-                ,  volume
-                ,  weight
-                ,  efficiencyMethod
-                ,  dataReadEfficiency
-                ,  dataEfficiency
-                ,  efficiencyCalculation
-                ,  densityAlc
-                ,  optionDensity);
+        MoonshineMethod mock = Mockito.mock ( MoonshineMethod.class );
+        mock.moonshineMethod ( inputReader
+                , dataReadDistillate
+                , dataReadMoonshine
+                , distillationYield
+                , distillate
+                , distillationYieldCalculation
+                , controlLoopYield
+                , rawMaterial
+                , alcMethod
+                , dataReadYield
+                , alcCalculation
+                , dataReadConcentrationAlc
+                , interpolation
+                , interpolationPureAlc
+                , alcConcentration
+                , coefficient
+                , volume
+                , weight
+                , efficiencyMethod
+                , dataReadEfficiency
+                , dataEfficiency
+                , efficiencyCalculation
+                , densityAlc
+                , optionDensity );
+        verify ( mock , Mockito.times ( 1 ) ).moonshineMethod ( inputReader
+                , dataReadDistillate
+                , dataReadMoonshine
+                , distillationYield
+                , distillate
+                , distillationYieldCalculation
+                , controlLoopYield
+                , rawMaterial
+                , alcMethod
+                , dataReadYield
+                , alcCalculation
+                , dataReadConcentrationAlc
+                , interpolation
+                , interpolationPureAlc
+                , alcConcentration
+                , coefficient
+                , volume
+                , weight
+                , efficiencyMethod
+                , dataReadEfficiency
+                , dataEfficiency
+                , efficiencyCalculation
+                , densityAlc
+                , optionDensity );
     }
 }

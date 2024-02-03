@@ -145,12 +145,12 @@ public class DataReadDistillate {
         } while (err);
         return foreshotsPercent;
     }
-    private void isMassPositive(double enteredMass) {
+    public void isMassPositive(double enteredMass) {
         if ( enteredMass < 0 ) {
             throw new NoPositiveNumberException ( "Number must be >= 0, no number " + enteredMass );
         }
     }
-    private  void isPercentForRange(double percent) {
+    public   void isPercentForRange(double percent) {
         if ( percent < 0 || percent > 100 ) {
             throw new NoBetweenPercents ( "Choose a number between 0 - 100, no number " + percent );
         }

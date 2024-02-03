@@ -6,6 +6,7 @@ import MoonshineDataRead.DataReadEfficiency.DataReadEfficiency;
 import MoonshineDataRead.DataReadYield.DataReadYield;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
+import java.util.logging.Level;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -162,4 +163,17 @@ class MoonshineDataReadTest {
         //Then
         assertEquals ( expected , result );
     }
+    @DisplayName ( "should be return temperature" )
+    @Test
+     void should_be_return_temp() {
+        DataReadConcentrationAlc io = new DataReadConcentrationAlc ( );
+        double expected = 4;
+
+        when ( io.temp ( inputReaderMock ) ).thenReturn ( expected );
+
+        //When
+        double result = io.temp ( inputReaderMock );
+
+        //Then
+        assertEquals ( expected , result );    }
 }

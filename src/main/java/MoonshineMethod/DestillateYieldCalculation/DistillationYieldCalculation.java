@@ -34,7 +34,7 @@ private static final Logger log = Logger.getLogger (DistillationYield.class.getN
             }
         } while (distillateOption != DistillateOption.EXIT);
     }
-    private DistillateOption getDistillateOption(InputReader inputReader , DataReadDistillate dataReadDistillate) {
+    public DistillateOption getDistillateOption(InputReader inputReader , DataReadDistillate dataReadDistillate) {
         boolean distillateOptionOk = false;
         DistillateOption distillateOption = null;
         while (!distillateOptionOk) {
