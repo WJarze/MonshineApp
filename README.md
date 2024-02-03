@@ -20,7 +20,7 @@ This application simplifies mass calculations related to the fermentation and di
 1. Compile the project using build tools such as Maven or Gradle.
 2. Create a JAR file using the command `mvn package` (for Maven) or the equivalent command for other build tools.
    ```bash
-   java -jar yourFileName.jar
+   java -jar MonshineApp.jar
 Run the application and follow the on-screen instructions.
 Requirements
 Installed Java Virtual Machine (JVM).
