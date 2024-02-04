@@ -10,12 +10,16 @@ This application simplifies mass calculations related to the fermentation and di
 2. **Distillation**
     - Mass calculations for the distillation process of alcohol.
     - Input data related to the distillate.
+  
+3. **Concentration conversion**
+    - Concentration conversion allows for the conversion of weight percent to volume percent and vice versa.
 
-3. **Efficiency**
+4. **Efficiency**
     - Efficiency calculations for distillation and fermentation processes.
    
-4. **Chemical properties**
+5. **Chemical properties**
     - Alcohol density.
+  
 ## How to Run
 1. Compile the project using build tools such as Maven or Gradle.
 2. Create a JAR file using the command `mvn package` (for Maven) or the equivalent command for other build tools.
